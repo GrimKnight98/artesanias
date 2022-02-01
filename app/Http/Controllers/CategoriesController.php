@@ -38,7 +38,7 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        /* VALIDATIONS
+        /* VALIDATIONS */
         $request->validate([
 
             'name' => 'required',
@@ -47,7 +47,7 @@ class CategoriesController extends Controller
 
             'catImage' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
-        ]);*/
+        ]);
 
         //FORM DATA
         $input = $request->all();
@@ -96,9 +96,33 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        /*
+        $request->validate([
+
+            'name' => 'required',
+
+            'castDesc' => 'required'
+
+        ]);*/
+        $input = $request->all();
+
+        if ($image = $request->file('catImage')) {
+            $destinationPath = 'images/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            //dd($input['catImage'] = "$profileImage");
+            $input['catImage'] = "$profileImage";
+        }else{
+            unset($input['catImage']);
+        }
+
+        $category->update($input);
+
+        return redirect()->route('categories.index')
+
+                        ->with('success','Product updated successfully');
     }
 
     /**

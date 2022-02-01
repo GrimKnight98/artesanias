@@ -29,8 +29,8 @@
                     <td>{{ $category->catDesc }}</td>
                     <td>2.846</td>
                     <td>
-                       <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
-                       <a href="" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                       <a href="" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                       <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
                        <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                     </td>
                   </tr>
