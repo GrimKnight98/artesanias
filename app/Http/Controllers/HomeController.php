@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        notify()->success('Laravel Notify is awesome!');
         return view('admin/dashboard');
     }
 }

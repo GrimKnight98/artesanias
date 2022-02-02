@@ -31,7 +31,13 @@
                     <td>
                        <a href="" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                        <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-success"><i class="fas fa-edit"></i></a>
-                       <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                       <!-- DELETE FORM -->
+                       <form action="{{ route('categories.destroy',$category->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+
+                        </form>
                     </td>
                   </tr>
                 @empty

@@ -61,7 +61,8 @@ class CategoriesController extends Controller
         }
 
         Category::create($input);
-        return redirect()->route('categories.index')->with('success','Product created successfully.');
+        notify()->success('Registro exitoso!', 'Listo!');
+        return redirect()->route('categories.index');
 
     }
 
@@ -119,10 +120,8 @@ class CategoriesController extends Controller
         }
 
         $category->update($input);
-
-        return redirect()->route('categories.index')
-
-                        ->with('success','Product updated successfully');
+        notify()->success('Actualización exitosa!', 'Listo!');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -131,8 +130,11 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         //
+        $category->delete();
+        notify()->success('Eliminacion exitosa!', 'Listo!');
+        return redirect()->route('categories.index');
     }
 }

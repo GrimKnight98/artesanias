@@ -14,8 +14,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('assets/dist/css/bootstrap.min.css')}}" rel="stylesheet">
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
+    @notifyCss
 
     <style>
       .bd-placeholder-img {
@@ -46,6 +45,9 @@
     @include('admin.layout.sidemenu')
 <!-- LEFT SIDE CONTENT -->
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        @notifyJs
+        <x:notify-messages />
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 
             @yield('content')
@@ -55,4 +57,5 @@
   </div>
 </div>
   </body>
+
 </html>
